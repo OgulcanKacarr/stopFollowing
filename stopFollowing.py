@@ -155,7 +155,7 @@ def start():
 		usernameSelect.send_keys(InstagramUser)
 		passwordSelect.send_keys(InstagramPassword)
 
-		signinXpath = '//*[@id="react-root"]/section/main/article/div[2]/div[1]/div/form/div[4]/button/div'
+		signinXpath = '//*[@id="loginForm"]/div/div[3]/button'
 		sigIn = browser.find_element_by_xpath(signinXpath)
 		sigIn.click()
 		time.sleep(5)
