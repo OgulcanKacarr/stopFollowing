@@ -8,6 +8,10 @@ import getpass
 global total
 import wget
 
+width = "150"
+height = "100"
+os.system("mode con cols="+width+"lines="+height)
+
 global InstagramUser
 global InstagramPassword
 
